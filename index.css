@@ -1,0 +1,85 @@
+/* General setup  */
+
+:root {
+  /* Fonts  */
+  --font-primary: "Source Sans 3", sans-serif;
+  /* Spacing */
+  --spacing-s: 16px;
+  /* Colors  */
+  --color-dark: hsl(300, 2%, 12%);
+  --color-mid: hsl(300, 2%, 72%);
+  --color-light: hsl(300, 2%, 99%);
+  /* Radius  */
+  --radius-circle: 50%;
+  /* Timing  */
+  --transition-short: all 0.2s;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-dark);
+  margin: 0;
+  background: var(--color-light);
+}
+
+/* Resets  */
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Utility classes */
+
+.flex {
+  display: flex;
+}
+
+.flex-centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  flex-flow: column;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+/* Layout  */
+
+header {
+  padding: var(--spacing-s);
+  border-bottom: 1px solid var(--color-mid);
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Images  */
+
+img {
+  display: block;
+}
+
+.avatar-img {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: var(--radius-circle);
+}
+
+/* Links  */
+
+a {
+  transition: var(--transition-short);
+}
