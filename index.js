@@ -28,3 +28,5 @@ const posts = [
     likes: 152,
   },
 ];
+
+const createPost = (postArray) => {};

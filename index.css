@@ -3,12 +3,17 @@
 :root {
   /* Fonts  */
   --font-primary: "Source Sans 3", sans-serif;
+  /* Font sizes  */
+  --font-size-small: 0.875rem;
+  --font-size-body: 1rem;
   /* Spacing */
+  --spacing-xs: 10px;
   --spacing-s: 16px;
   /* Colors  */
   --color-dark: hsl(300, 2%, 12%);
   --color-mid: hsl(300, 2%, 72%);
   --color-light: hsl(300, 2%, 99%);
+  --color-highlight: hsl(300, 37%, 81%);
   /* Radius  */
   --radius-circle: 50%;
   /* Timing  */
@@ -20,16 +25,17 @@ body {
   color: var(--color-dark);
   margin: 0;
   background: var(--color-light);
+  font-size: 16px;
 }
 
 /* Resets  */
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 ul {
-  margin: 0;
   padding: 0;
   list-style-type: none;
 }
@@ -53,6 +59,10 @@ ul {
   justify-content: space-between;
 }
 
+.bold {
+  font-weight: 900;
+}
+
 /* Layout  */
 
 header {
@@ -65,7 +75,18 @@ header {
   margin: 0 auto;
 }
 
-/* Images  */
+.post-info__container,
+.post-message__container {
+  padding: var(--spacing-s);
+  justify-content: start;
+  gap: var(--spacing-s);
+}
+
+.post-message__icons-list {
+  gap: var(--spacing-s);
+}
+
+/* Images & icons */
 
 img {
   display: block;
@@ -78,8 +99,44 @@ img {
   border-radius: var(--radius-circle);
 }
 
+.post-img {
+  height: 375px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.post-icon {
+  height: 22px;
+  width: 22px;
+}
+
 /* Links  */
 
 a {
   transition: var(--transition-short);
+}
+
+/* Buttons  */
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-short);
+}
+
+.post-icon-btn {
+  padding: var(--spacing-xs);
+  background: var(--color-mid);
+}
+
+.post-icon-btn:hover,
+.post-icon-btn:focus {
+  background: var(--color-highlight);
+}
+
+/* Typography  */
+
+.post-info__name {
+  font-size: var(--font-size-body);
 }
