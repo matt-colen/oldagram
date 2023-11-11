@@ -15,7 +15,7 @@
     <!-- Styles  -->
     <link rel="stylesheet" href="index.css" />
     <!-- Scripts  -->
-    <script src="index.js" defer></script>
+    <script src="index.js" type="module" defer></script>
   </head>
   <body>
     <header>
@@ -43,16 +43,16 @@
           </ul>
         </nav>
       </div>
+      <div class="container">
+        <h1 class="title">Recent posts</h1>
+      </div>
     </header>
 
     <main>
-      <section class="posts__section" id="posts">
-        <div class="container">
-          <h1 class="title">RECENT POSTS</h1>
-        </div>
+      <section class="posts__section">
         <div
           id="posts__container"
-          class="container posts__container flex"
+          class="container container--posts flex"
         ></div>
       </section>
     </main>

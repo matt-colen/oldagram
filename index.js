@@ -1,36 +1,9 @@
-const posts = [
-  {
-    name: "Vincent van Gogh",
-    username: "vincey1853",
-    location: "Zundert, Netherlands",
-    avatar: "images/avatar-vangogh.jpg",
-    post: "images/post-vangogh.jpg",
-    comment: "just took a few mushrooms lol",
-    likes: 21,
-  },
-  {
-    name: "Gustave Courbet",
-    username: "gus1819",
-    location: "Ornans, France",
-    avatar: "images/avatar-courbet.jpg",
-    post: "images/post-courbet.jpg",
-    comment: "i'm feelin a bit stressed tbh",
-    likes: 4,
-  },
-  {
-    name: "Joseph Ducreux",
-    username: "jd1735",
-    location: "Paris, France",
-    avatar: "images/avatar-ducreux.jpg",
-    post: "images/post-ducreux.jpg",
-    comment:
-      "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-    likes: 152,
-  },
-];
+// Imports
+import { posts } from "./posts.js";
 
+// Creates a new post
 const createPost = (postArray) => {
-  let posts = postArray.map((postObj, index) => {
+  let posts = postArray.map((postObj) => {
     const postName = postObj["name"];
     const postUsername = postObj["username"];
     const postLocation = postObj["location"];
@@ -39,13 +12,13 @@ const createPost = (postArray) => {
     const postComment = postObj["comment"];
     const postLikes = postObj["likes"];
 
-    const postEl = `
+    const postArticle = `
     <!-- Post article  -->
-    <article id="${postName}" class="post">
+    <article id="${postName}-post" class="post">
       <!-- Post info section of article -->
       <section class="post-info__container flex flex-centered">
         <img
-          class="post-info__img avatar-img"
+          class="avatar-img"
           src="${postAvatar}"
           alt="${postName} avatar"
         />
@@ -96,7 +69,7 @@ const createPost = (postArray) => {
           </li>
         </ul>
         <div class="post-message__info">
-          <p><span class="post-likes bold" id="post-likes">${postLikes}</span> likes</p>
+          <p><span id="post-likes" class="post-likes bold">${postLikes}</span> likes</p>
           <p class="post-message">
             <span class="bold">${postUsername}</span> ${postComment}
             lol
@@ -106,43 +79,48 @@ const createPost = (postArray) => {
     </article>
     `;
 
-    return postEl;
+    return postArticle;
   });
-
-  posts = posts.join("");
 
   renderPosts(posts);
 };
 
+// Renders out all the posts
 const renderPosts = (posts) => {
   const postsContainer = document.querySelector("#posts__container");
+  posts = posts.join(""); // Makes sure that the commas don't render from the array
 
   postsContainer.innerHTML += posts;
 };
 
-createPost(posts);
+createPost(posts); // Creates the example posts
 
+// Selects all the like buttons for each post
 const likeBtns = document.querySelectorAll(".like-btn");
 
+// Captures the current like count for the "liked" post
 const capturePostLikeCount = (e) => {
-  const parentEl = e.target.closest(".post");
+  const parentEl = e.target.closest(".post"); // Identifies the parent post el
   const likeCountEl = parentEl.querySelector(`#post-likes`);
 
   incrementLikes(likeCountEl);
 };
 
+// Adds a like to the post
 const incrementLikes = (likeEl) => {
-  let likeCount = +likeEl.textContent;
+  let likeCount = +likeEl.textContent; // + ensures a # data type
 
   likeCount++;
 
   renderLikes(likeEl, likeCount);
 };
 
+// Renders out the like count
 const renderLikes = (el, count) => {
   el.textContent = count;
 };
 
+// Adds event listeners to each like button
 likeBtns.forEach((btn) => {
   btn.addEventListener("dblclick", (e) => {
     capturePostLikeCount(e);

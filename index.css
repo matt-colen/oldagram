@@ -3,12 +3,9 @@
 :root {
   /* Fonts  */
   --font-primary: "Source Sans 3", sans-serif;
-  /* Font sizes  */
-  --font-size-small: 0.875rem;
-  --font-size-body: 1rem;
   /* Spacing */
   --spacing-xs: 10px;
-  --spacing-s: 16px;
+  --spacing-s: 20px;
   --spacing-m: 50px;
   /* Colors  */
   --color-dark: hsl(300, 2%, 12%);
@@ -54,10 +51,6 @@ ul {
   align-items: center;
 }
 
-.flex-column {
-  flex-flow: column;
-}
-
 .flex-space-between {
   justify-content: space-between;
 }
@@ -68,9 +61,9 @@ ul {
 
 /* Layout  */
 
-header {
+nav {
   padding: var(--spacing-s);
-  border-bottom: 1px solid var(--color-mid);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .container {
@@ -78,35 +71,26 @@ header {
   margin: 0 auto;
 }
 
-.container--nav {
-  padding: 0 var(--spacing-s);
-}
-
-.posts__container {
+.container--posts {
   flex-wrap: wrap;
-  gap: var(--spacing-m);
-  padding: var(--spacing-xs);
-  padding-bottom: var(--spacing-m);
+  gap: var(--spacing-s);
+  padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-m)
+    var(--spacing-xs);
 }
 
 .post {
   width: 400px;
-  flex-grow: 1;
+  flex-grow: 1; /* Allows flex-wrapped post to grow */
   border: 1px solid var(--color-border);
   border-radius: var(--radius-soft);
   box-shadow: 0 2px 10px var(--color-light);
-  background: var(--color-light);
 }
 
 .post-info__container,
 .post-message__container {
   padding: var(--spacing-s);
   justify-content: start;
-  gap: var(--spacing-s);
-}
-
-.post-message__container {
-  padding: var(--spacing-xs);
+  gap: var(--spacing-xs);
 }
 
 .post-message__icons-list {
@@ -114,26 +98,25 @@ header {
 }
 
 .post-message__info {
-  padding: var(--spacing-s);
+  padding: var(--spacing-xs) var(--spacing-s);
 }
 
 /* Images & icons */
 
 img {
   display: block;
+  object-fit: cover;
 }
 
 .avatar-img {
   height: 45px;
   width: 45px;
-  object-fit: cover;
   border-radius: var(--radius-circle);
 }
 
 .post-img {
   height: 375px;
   width: 100%;
-  object-fit: cover;
 }
 
 .post-icon {
@@ -169,18 +152,12 @@ button {
 /* Typography  */
 
 .title {
-  font-size: 2rem;
-  padding: var(--spacing-s) var(--spacing-xs);
-  padding-top: var(--spacing-m);
+  font-size: 1.5rem;
+  padding: var(--spacing-m) var(--spacing-xs) var(--spacing-s) var(--spacing-xs);
   opacity: 0.9;
+  text-transform: uppercase;
 }
 
 .post-info__name {
   font-size: var(--font-size-body);
-}
-
-@media only screen and (max-width: 1000px) {
-  .container--nav {
-    padding: 0;
-  }
 }
