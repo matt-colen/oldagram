@@ -9,13 +9,16 @@
   /* Spacing */
   --spacing-xs: 10px;
   --spacing-s: 16px;
+  --spacing-m: 50px;
   /* Colors  */
   --color-dark: hsl(300, 2%, 12%);
   --color-mid: hsl(300, 2%, 72%);
   --color-light: hsl(300, 2%, 99%);
   --color-highlight: hsl(300, 37%, 81%);
+  --color-border: hsl(300, 12%, 82%);
   /* Radius  */
   --radius-circle: 50%;
+  --radius-soft: 5px;
   /* Timing  */
   --transition-short: all 0.2s;
 }
@@ -25,7 +28,7 @@ body {
   color: var(--color-dark);
   margin: 0;
   background: var(--color-light);
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* Resets  */
@@ -71,8 +74,28 @@ header {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 1500px;
   margin: 0 auto;
+}
+
+.container--nav {
+  padding: 0 var(--spacing-s);
+}
+
+.posts__container {
+  flex-wrap: wrap;
+  gap: var(--spacing-m);
+  padding: var(--spacing-xs);
+  padding-bottom: var(--spacing-m);
+}
+
+.post {
+  width: 400px;
+  flex-grow: 1;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-soft);
+  box-shadow: 0 2px 10px var(--color-light);
+  background: var(--color-light);
 }
 
 .post-info__container,
@@ -82,8 +105,16 @@ header {
   gap: var(--spacing-s);
 }
 
+.post-message__container {
+  padding: var(--spacing-xs);
+}
+
 .post-message__icons-list {
-  gap: var(--spacing-s);
+  padding: 0 var(--spacing-xs);
+}
+
+.post-message__info {
+  padding: var(--spacing-s);
 }
 
 /* Images & icons */
@@ -127,7 +158,7 @@ button {
 
 .post-icon-btn {
   padding: var(--spacing-xs);
-  background: var(--color-mid);
+  border-radius: var(--radius-soft);
 }
 
 .post-icon-btn:hover,
@@ -137,6 +168,19 @@ button {
 
 /* Typography  */
 
+.title {
+  font-size: 2rem;
+  padding: var(--spacing-s) var(--spacing-xs);
+  padding-top: var(--spacing-m);
+  opacity: 0.9;
+}
+
 .post-info__name {
   font-size: var(--font-size-body);
+}
+
+@media only screen and (max-width: 1000px) {
+  .container--nav {
+    padding: 0;
+  }
 }
