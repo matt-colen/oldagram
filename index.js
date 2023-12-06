@@ -1,30 +1,28 @@
-// Imports
 import { posts } from "./posts.js";
 
-// Creates a new post
 const createPost = (postArray) => {
   let posts = postArray.map((postObj) => {
-    const postName = postObj["name"];
-    const postUsername = postObj["username"];
-    const postLocation = postObj["location"];
-    const postImg = postObj["post"];
-    const postAvatar = postObj["avatar"];
-    const postComment = postObj["comment"];
-    const postLikes = postObj["likes"];
+    const post = postObj["name"];
+    const username = postObj["username"];
+    const location = postObj["location"];
+    const img = postObj["post"];
+    const avatar = postObj["avatar"];
+    const comment = postObj["comment"];
+    const likes = postObj["likes"];
 
     const postArticle = `
     <!-- Post article  -->
-    <article id="${postName}-post" class="post">
+    <article id="${post}-post" class="post">
       <!-- Post info section of article -->
       <section class="post-info__container flex flex-centered">
         <img
           class="avatar-img"
-          src="${postAvatar}"
-          alt="${postName} avatar"
+          src="${avatar}"
+          alt="${post} avatar"
         />
         <div class="post-info__author">
-          <h2 class="post-info__name bold">${postName}</h2>
-          <p class="post-info__location">${postLocation}</p>
+          <h2 class="post-info__name bold">${post}</h2>
+          <p class="post-info__location">${location}</p>
         </div>
       </section>
 
@@ -32,8 +30,8 @@ const createPost = (postArray) => {
       <section class="post-img__container">
         <img
           class="post-img"
-          src="${postImg}"
-          alt="Painted selfie of ${postName}"
+          src="${img}"
+          alt="Painted selfie of ${post}"
         />
       </section>
 
@@ -67,9 +65,9 @@ const createPost = (postArray) => {
           </li>
         </ul>
         <div class="post-message__info">
-          <p><span id="post-likes" class="post-likes bold">${postLikes}</span> likes</p>
+          <p><span id="post-likes" class="post-likes bold">${likes}</span> likes</p>
           <p class="post-message">
-            <span class="bold">${postUsername}</span> ${postComment}
+            <span class="bold">${username}</span> ${comment}
             lol
           </p>
         </div>
@@ -83,22 +81,19 @@ const createPost = (postArray) => {
   renderPosts(posts);
 };
 
-// Renders out all the posts
 const renderPosts = (posts) => {
   const postsContainer = document.querySelector("#posts__container");
-  posts = posts.join(""); // Makes sure that the commas don't render from the array
+  posts = posts.join(""); 
 
   postsContainer.innerHTML += posts;
 };
 
 createPost(posts); // Creates the example posts
 
-// Selects all the like buttons for each post
 const likeBtns = document.querySelectorAll(".like-btn");
 
-// Captures the current like count for the "liked" post
 const capturePostLikeCount = (e) => {
-  const parentEl = e.target.closest(".post"); // Identifies the parent post el
+  const parentEl = e.target.closest(".post"); 
   const likeCountEl = parentEl.querySelector(`#post-likes`);
   const heartIcon = parentEl.querySelector(".like-svg");
 
@@ -110,35 +105,30 @@ const capturePostLikeCount = (e) => {
   updateHeartIconStyling(heartIcon);
 };
 
-// Removes a like from the post
 const decrementLikes = (likeEl) => {
-  let likeCount = +likeEl.textContent; // + ensures a # data type
+  let likeCount = +likeEl.textContent; 
 
   likeCount--;
 
   renderLikes(likeEl, likeCount);
 };
 
-// Adds a like to the post
 const incrementLikes = (likeEl) => {
-  let likeCount = +likeEl.textContent; // + ensures a # data type
+  let likeCount = +likeEl.textContent; 
 
   likeCount++;
 
   renderLikes(likeEl, likeCount);
 };
 
-// Renders out the like count
 const renderLikes = (el, count) => {
   el.textContent = count;
 };
 
-// Update heart svg styling
 const updateHeartIconStyling = (icon) => {
   icon.classList.toggle("post-icon--clicked");
 };
 
-// Adds event listeners to each like button
 likeBtns.forEach((btn) => {
   btn.addEventListener("dblclick", (e) => {
     capturePostLikeCount(e);
